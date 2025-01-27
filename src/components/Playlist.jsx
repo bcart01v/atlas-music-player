@@ -4,7 +4,7 @@ import PlaylistItem from './PlaylistItem';
 const Playlist = () => {
   const playlist = [
     { id: 1, title: '30', artist: 'Bo Burnham', length: '2:35' },
-    { id: 2, title: 'Content', artist: 'Bo Burnham', length: '1:43' },
+    { id: 2, title: 'Superbowl Shuffle', artist: '1985 Chicago Bears', length: '1:43' },
     { id: 3, title: 'Welcome to the Internet', artist: 'Bo Burnham', length: '4:36' },
     { id: 4, title: 'Bezos I', artist: 'Bo Burnham', length: '0:58' },
     { id: 5, title: 'All Eyes On Me', artist: 'Bo Burnham', length: '5:03' },
@@ -15,9 +15,9 @@ const Playlist = () => {
   ];
 
   return (
-    <div className="">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">Playlist</h3>
-      <div className="">
+    <div className="bg-lightBackground w-100 p-4 rounded-lg border border-lightText dark:bg-darkBackground dark:border-darkText">
+      <h3 className="text-lg font-semibold text-lightText dark:text-darkText mb-4">Playlist</h3>
+      <div className="space-y-2">
         {playlist.map((song, index) => (
           <PlaylistItem
             key={song.id}
@@ -25,6 +25,7 @@ const Playlist = () => {
             artist={song.artist}
             length={song.length}
             isPlaying={index === 0}
+            hoverColor="hover:bg-primary dark:hover:bg-primary-dark hover:text-lightText dark:hover:text-darkText"
           />
         ))}
       </div>
