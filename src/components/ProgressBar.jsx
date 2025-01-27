@@ -22,7 +22,9 @@ const MusicProgressBar = () => {
   return (
     <div className="flex flex-col items-center mt-6 pb-1.5">
       <div className="w-96 flex items-center gap-4">
-        <span className="text-sm text-gray-600">{currentTime()}</span>
+        <span className="text-sm text-lightText dark:text-white">
+          {currentTime()}
+        </span>
 
         <input
           type="range"
@@ -30,14 +32,16 @@ const MusicProgressBar = () => {
           max="100"
           value={progress}
           onChange={(e) => setProgress(e.target.value)}
-          className="w-full cursor-pointer appearance-none rounded-lg bg-gray-300"
+          className="w-full cursor-pointer appearance-none rounded-lg bg-lightBackground dark:bg-darkBackground dark:border dark:border-white"
           style={{
-            background: `linear-gradient(to right, #4B5563 ${progress}%, #E5E7EB ${progress}%)`,
+            background: `linear-gradient(to right, #C83803 ${progress}%, #0B162A ${progress}%)`,
             height: '8px',
           }}
         />
 
-        <span className="text-sm text-gray-600">{remainingTime()}</span>
+        <span className="text-sm text-lightText dark:text-white">
+          {remainingTime()}
+        </span>
       </div>
     </div>
   );
