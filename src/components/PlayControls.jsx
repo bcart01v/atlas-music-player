@@ -6,7 +6,7 @@ import shuffle from '../assets/shuffle.svg'
 
 const PlayControls = () => {
   return (
-    <div className='flex-col flex items-center mt-6'>
+    <div className=''>
     <div className='w-96 flex justify-between'>
       <p className='w-7 mt-2 text-2xl font-medium cursor-pointer'>1x</p>
       <img className='w-7 cursor-pointer' src={previous}></img>
