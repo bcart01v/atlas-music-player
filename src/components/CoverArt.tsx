@@ -27,9 +27,9 @@ const CoverArt: React.FC<CoverArtProps> = ({ cover, lyrics }) => {
             {isHovered && lyrics && (
                 <div
                     ref={lyricsRef}
-                    className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-75 z-20 flex items-center justify-center text-white p-6 pt-12 overflow-auto rounded-2xl"
+                    className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-80 z-20 flex flex-col items-start text-white p-10 p-5 overflow-y-auto rounded-2xl"
                 >
-                    <p className="text-sm leading-5 text-center whitespace-pre-line">
+                    <p className="text-sm leading-6 text-left whitespace-pre-line w-full">
                         {lyrics}
                     </p>
                 </div>
