@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React from "react";
 
-const MusicProgressBar = () => {
-  const [progress, setProgress] = useState(0);
-  const totalSeconds = 223;
+interface MusicProgressBarProps {
+  progress: number;
+  duration: number;
+  onProgressChange: (progress: number) => void;
+}
 
+const MusicProgressBar: React.FC<MusicProgressBarProps> = ({
+  progress,
+  duration,
+  onProgressChange,
+}) => {
   const currentTime = () => {
-    const currentSeconds = Math.floor((progress / 100) * totalSeconds);
+    const currentSeconds = Math.floor((progress / 100) * duration);
     const minutes = Math.floor(currentSeconds / 60);
     const seconds = currentSeconds % 60;
     return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
   };
 
   const remainingTime = () => {
-    const currentSeconds = Math.floor((progress / 100) * totalSeconds);
-    const remainingSeconds = totalSeconds - currentSeconds;
+    const currentSeconds = Math.floor((progress / 100) * duration);
+    const remainingSeconds = duration - currentSeconds;
     const minutes = Math.floor(remainingSeconds / 60);
     const seconds = remainingSeconds % 60;
     return `-${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
@@ -31,11 +38,11 @@ const MusicProgressBar = () => {
           min="0"
           max="100"
           value={progress}
-          onChange={(e) => setProgress(e.target.value)}
+          onChange={(e) => onProgressChange(Number(e.target.value))}
           className="w-full cursor-pointer appearance-none rounded-lg bg-lightBackground dark:bg-darkBackground dark:border dark:border-white"
           style={{
             background: `linear-gradient(to right, #C83803 ${progress}%, #0B162A ${progress}%)`,
-            height: '8px',
+            height: "8px",
           }}
         />
 
