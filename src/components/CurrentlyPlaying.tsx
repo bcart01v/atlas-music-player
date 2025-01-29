@@ -4,6 +4,7 @@ import SongTitle from './SongTitle';
 import PlayControls from './PlayControls';
 import VolumeControls from './VolumeControls';
 import MusicProgressBar from './ProgressBar';
+import AudioPlayer from "./AudioPlayer";
 
 interface Song {
   id: string;
@@ -105,7 +106,7 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({
   };
 
   const handleProgressChange = (newProgress: number) => {
-    setProgress(newProgress);
+    setTimeout(() => setProgress(progress), 300); // Snap back to the original progress
   };
 
   if (!currentSong) return <div>Loading...</div>;
@@ -117,7 +118,7 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({
 
       <MusicProgressBar
         progress={progress}
-        duration={currentSong.duration}
+        duration={currentSong?.duration ?? 0}
         onProgressChange={handleProgressChange}
       />
 
@@ -136,6 +137,13 @@ const CurrentlyPlaying: React.FC<CurrentlyPlayingProps> = ({
       <VolumeControls
         volume={volume}
         onVolumeChange={(newVolume) => setVolume(newVolume)}
+      />
+      <AudioPlayer
+        songUrl={currentSong?.song ?? ""} 
+        isPlaying={isPlaying}
+        volume={volume}
+        playbackSpeed={playbackSpeed}
+        onSongEnd={handleFastForward}
       />
     </div>
   );
