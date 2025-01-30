@@ -17,6 +17,7 @@ const PlayListItem: React.FC<PlayListItemProps> = ({
 }) => {
   return (
     <div
+      role="option"
       className={`flex items-center justify-between p-2 rounded-lg transition duration-200 cursor-pointer ${
         isPlaying
           ? 'bg-primary text-darkText'
